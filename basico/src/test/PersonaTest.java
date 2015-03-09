@@ -82,6 +82,11 @@ public class PersonaTest {
 		}
 	}
 
+	@Override
+	protected void finalize() throws Throwable {
+		entityManager.close();
+	}
+	
 	public static void main(String[] args) throws Exception {
 		new PersonaTest().iniciar();
 	}
