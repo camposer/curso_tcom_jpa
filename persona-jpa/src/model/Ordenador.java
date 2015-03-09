@@ -33,6 +33,12 @@ public class Ordenador implements Serializable {
 	public Ordenador() {
 	}
 
+	public Ordenador(String nombre, String serial, Persona persona) {
+		this.nombre = nombre;
+		this.serial = serial;
+		this.persona = persona;
+	}
+
 	public Integer getId() {
 		return this.id;
 	}
@@ -65,4 +71,9 @@ public class Ordenador implements Serializable {
 		this.persona = persona;
 	}
 
+	@Override
+	public String toString() {
+		return "Ordenador [id=" + id + ", nombre=" + nombre + ", serial="
+				+ serial + ", persona=" + persona + "]";
+	}
 }

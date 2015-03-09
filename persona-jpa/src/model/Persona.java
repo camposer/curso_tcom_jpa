@@ -40,6 +40,10 @@ public class Persona implements Serializable {
 		this.fechanacimiento = fechaNacimiento;
 	}
 
+	public Persona(Integer id) {
+		this.id = id;
+	}
+
 	public Persona() {
 	}
 
@@ -101,6 +105,6 @@ public class Persona implements Serializable {
 	public String toString() {
 		return "Persona [id=" + id + ", apellido=" + apellido
 				+ ", fechanacimiento=" + fechanacimiento + ", nombre=" + nombre
-				+ ", ordenadores=" + ordenadores + "]";
+				+ "]";
 	}
 }
