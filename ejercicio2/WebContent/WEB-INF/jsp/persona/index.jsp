@@ -23,22 +23,24 @@
 <h1>Personas</h1>
 
 <div class="error">
-	${error}
+	<c:forEach var="e" items="${errores}">
+		${e}<br>
+	</c:forEach>
 </div>
 
 <form action='guardar' method='post'>
 	<table id='tabla-form' class='tabla-centrada'>
 		<tr>
 			<td>Nombre</td>
-			<td><input type='text' name='nombre'></td>
+			<td><input type='text' name='nombre' value='${personaForm.nombre}'></td>
 		</tr>
 		<tr>
 			<td>Apellido</td>
-			<td><input type='text' name='apellido'></td>
+			<td><input type='text' name='apellido' value='${personaForm.apellido}'></td>
 		</tr>
 		<tr>
 			<td>Fecha Nacimiento</td>
-			<td><input type='text' name='fechanacimiento'></td>
+			<td><input type='text' name='fechanacimiento' value='${personaForm.fechanacimiento}'></td>
 		</tr>
 		<tr>
 			<td colspan='2'>
@@ -65,8 +67,8 @@
 				<td>${p.nombre}</td>
 				<td>${p.apellido}</td>
 				<td>${p.fechanacimiento}</td>
-				<td><a href='#'>mostrar</a></td>
-				<td><a href='#'>eliminar</a></td>
+				<td><a href='mostrar?id=${p.id}'>mostrar</a></td>
+				<td><a href='eliminar?id=${p.id}'>eliminar</a></td>
 			</tr>
 		</c:forEach>
 	</tbody>

@@ -26,4 +26,8 @@ h1 {
 .error {
 	background-color: red;
 	color: white;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
 }
