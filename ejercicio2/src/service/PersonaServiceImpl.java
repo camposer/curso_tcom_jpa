@@ -2,14 +2,17 @@ package service;
 
 import java.util.List;
 
+import model.Persona;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
-import model.Persona;
 import dao.PersonaDao;
 
 @Component
+@Transactional // Delega en Spring la gestión de transacciones
 public class PersonaServiceImpl implements PersonaService {
 	@Autowired
 	@Qualifier("personaDaoJpaImpl")
