@@ -1,5 +1,10 @@
 package controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
+import model.Persona;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,43 +20,43 @@ public class PersonaController {
 	@Autowired
 	private PersonaService personaService;
 	
-	@RequestMapping("mostrar") 
-	public String mostrar(Model model) {
-		model.addAttribute("personas", personaService.obtenerPersonas());
-		return "/WEB-INF/jsp/persona/mostrar.jsp";
+	@RequestMapping("") 
+	public String index(Model model) {
+		inicializar(model);
+		return "/WEB-INF/jsp/persona/index.jsp";
 	}
 
-	// @RequestMapping("resultado")
-	// public String resultado(
-	// @RequestParam String nombre,
-	// @RequestParam String apellido,
-	// @RequestParam Integer edad,
-	// @RequestParam String btnAgregar,
-	// Model model) {
-	//
-	// model.addAttribute("nombre", nombre);
-	// model.addAttribute("apellido", apellido);
-	// model.addAttribute("edad", edad);
-	//
-	// if (btnAgregar != null)
-	// model.addAttribute("mensaje", "Agregando...");
-	// else
-	// model.addAttribute("mensaje", "Modificando...");
-	//
-	// return "/jsp/persona/resultado.jsp";
-	// }
+	private void inicializar(Model model) {
+		model.addAttribute("personas", personaService.obtenerPersonas());
+	}
+	
+	@RequestMapping("guardar")
+	public String resultado(PersonaForm personaForm, 
+			@RequestParam(required=false) String btnAgregar,
+			Model model) throws ParseException {
 
-	@RequestMapping("resultado")
-	public String resultado(PersonaForm p, @RequestParam String btnAgregar,
-			Model model) {
+		// Construyendo una persona del modelo a partir de los datos del formulario
+		Persona persona = new Persona();
+		persona.setNombre(personaForm.getNombre());
+		persona.setApellido(personaForm.getApellido());
+		persona.setFechanacimiento(
+				new SimpleDateFormat("yyyy-MM-dd")
+					.parse(personaForm.getFechanacimiento()));
 
-		model.addAttribute("persona", p);
+		boolean esValido = false;
+		try {
+			personaService.agregarPersona(persona);
+			esValido = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("error", "Error agregando la persona");
+		}
 
-		if (btnAgregar != null)
-			model.addAttribute("mensaje", "Agregando...");
-		else
-			model.addAttribute("mensaje", "Modificando...");
-
-		return "/WEB-INF/jsp/persona/resultado.jsp";
+		if (!esValido) {
+			inicializar(model);
+			return "forward:/WEB-INF/jsp/persona/index.jsp";
+		} else {
+			return "redirect:/mvc/persona/";
+		}
 	}
 }

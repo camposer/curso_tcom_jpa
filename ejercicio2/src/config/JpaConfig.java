@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 // Una clase de configuraciones tiene beans!
 @Configuration // Es hija de @Component
-@EnableTransactionManagement
+@EnableTransactionManagement // Habilita el uso de @Transactional
 public class JpaConfig {
 	// El nombre del método es el id del bean
 	@Bean // Define un bean

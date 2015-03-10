@@ -21,7 +21,12 @@
 <%--  END: específico --%>
 
 <h1>Personas</h1>
-<form action='resultado' method='post'>
+
+<div class="error">
+	${error}
+</div>
+
+<form action='guardar' method='post'>
 	<table id='tabla-form' class='tabla-centrada'>
 		<tr>
 			<td>Nombre</td>
@@ -33,7 +38,7 @@
 		</tr>
 		<tr>
 			<td>Fecha Nacimiento</td>
-			<td><input type='text' name='fechaNacimiento'></td>
+			<td><input type='text' name='fechanacimiento'></td>
 		</tr>
 		<tr>
 			<td colspan='2'>

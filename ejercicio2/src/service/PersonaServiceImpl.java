@@ -5,17 +5,15 @@ import java.util.List;
 import model.Persona;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import dao.PersonaDao;
 
 @Component
-@Transactional // Delega en Spring la gestión de transacciones
+@Transactional // Delega en Spring la gestión de transacciones (a través de aspectos)
 public class PersonaServiceImpl implements PersonaService {
 	@Autowired
-	@Qualifier("personaDaoJpaImpl")
 	private PersonaDao personaDao;
 
 	@Override

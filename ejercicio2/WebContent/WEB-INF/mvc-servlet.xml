@@ -13,7 +13,7 @@
 	<!-- Configurando ruta a partir de la cual Spring buscará clases 
 		la anotación @Component -->	
 	<context:component-scan base-package="config"/>
-	<context:component-scan base-package="controller"/>
 	<context:component-scan base-package="dao"/>
 	<context:component-scan base-package="service"/>
+	<context:component-scan base-package="controller"/>
 </beans>
