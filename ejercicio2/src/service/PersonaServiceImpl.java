@@ -41,4 +41,9 @@ public class PersonaServiceImpl implements PersonaService {
 		return personaDao.obtenerTodos();
 	}
 
+	@Override
+	public List<Persona> obtenerPersonasOrdPorFecha() {
+		return personaDao.obtenerOrdenadasPorFecha();
+	}
+
 }

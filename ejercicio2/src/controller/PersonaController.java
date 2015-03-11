@@ -71,7 +71,7 @@ public class PersonaController {
 	}
 
 	private void inicializar(Model model) {
-		model.addAttribute("personas", personaService.obtenerPersonas());
+		model.addAttribute("personas", personaService.obtenerPersonasOrdPorFecha());
 	}
 	
 	@RequestMapping("guardar")

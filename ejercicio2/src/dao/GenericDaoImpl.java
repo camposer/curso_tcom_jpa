@@ -48,5 +48,4 @@ public class GenericDaoImpl<T, K> implements GenericDao<T, K> {
 				.createNamedQuery(clase.getSimpleName() + ".findAll")
 				.getResultList();
 	}
-
 }

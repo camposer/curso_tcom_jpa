@@ -10,4 +10,5 @@ public interface PersonaService {
 	public void eliminarPersona(Integer id);
 	public Persona obtenerPersona(Integer id);
 	public List<Persona> obtenerPersonas();
+	public List<Persona> obtenerPersonasOrdPorFecha();
 }
