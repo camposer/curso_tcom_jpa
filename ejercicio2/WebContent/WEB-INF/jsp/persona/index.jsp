@@ -14,7 +14,7 @@
 }
 </style>
 <script>
-	var modificar = function() {
+	var guardar = function() {
 		document.forms[0].submit();
 	}
 </script>
@@ -29,6 +29,7 @@
 </div>
 
 <form action='guardar' method='post'>
+	<input type="hidden" name="id" value="${personaForm.id}">
 	<table id='tabla-form' class='tabla-centrada'>
 		<tr>
 			<td>Nombre</td>
@@ -44,8 +45,7 @@
 		</tr>
 		<tr>
 			<td colspan='2'>
-				<input type='submit' name='btnAgregar' value='Agregar'>
-				<input type='button' value='Modificar' onclick='modificar()'>
+				<input type='button' value='guardar' onclick='guardar()'>
 			</td>
 		</tr>
 	</table>

@@ -36,6 +36,7 @@ public class PersonaController {
 		Persona persona = personaService.obtenerPersona(id);
 		
 		PersonaForm personaForm = new PersonaForm();
+		personaForm.setId(persona.getId());
 		personaForm.setNombre(persona.getNombre());
 		personaForm.setApellido(persona.getApellido());
 		String fnac = (persona.getFechanacimiento()!=null)?new SimpleDateFormat("yyyy-MM-dd")
@@ -90,7 +91,12 @@ public class PersonaController {
 							new SimpleDateFormat("yyyy-MM-dd")
 								.parse(personaForm.getFechanacimiento()));
 				
-				personaService.agregarPersona(persona);
+				if (personaForm.getId() != null) { // Modificando
+					persona.setId(personaForm.getId());
+					personaService.modificarPersona(persona);
+				} else { // Agregando
+					personaService.agregarPersona(persona);
+				}
 			} catch (PersistenceException e) {
 				e.printStackTrace();
 				errores.add("Error guardando en BD");

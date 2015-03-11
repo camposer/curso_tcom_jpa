@@ -1,10 +1,17 @@
 package form;
 
 public class PersonaForm {
+	private Integer id;
 	private String nombre;
 	private String apellido;
 	private String fechanacimiento; // TODO Cambiar por tipo de dato directo (ver Conversores y ProetyEditors)
 	
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
 	public String getNombre() {
 		return nombre;
 	}
